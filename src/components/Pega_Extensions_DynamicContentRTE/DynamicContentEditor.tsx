@@ -64,6 +64,7 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
     const pConn = getPConnect();
     const actions = pConn.getActionsApi();
     const propName = pConn.getStateProps().value;
+    console.log('propName:', propName);
     const hasValueChange = useRef(false);
     const testIds = useTestIds(testId, getDynamicContentEditorTestIds);
     const menuID = useUID();

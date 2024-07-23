@@ -1,1 +1,1 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/components/Pega_Extensions_DynamicContentRTE/index.tsx"],"names":[],"mappings":"AAQA,KAAK,sBAAsB,GAAG;IAC5B,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAGF,QAAA,MAAM,+BAA+B,UAAW,sBAAsB,4CAsHrE,CAAC;AAEF,eAAe,+BAA+B,CAAC"}
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/components/Pega_Extensions_DynamicContentRTE/index.tsx"],"names":[],"mappings":"AAQA,KAAK,sBAAsB,GAAG;IAC5B,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAGF,QAAA,MAAM,+BAA+B,UAAW,sBAAsB,4CAwGrE,CAAC;AAEF,eAAe,+BAA+B,CAAC"}
