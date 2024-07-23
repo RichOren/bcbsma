@@ -17,7 +17,7 @@ pega-reference::after{
 }`;
 
 export const createPegaReferenceElement = () => {
-  return class PegaReferenceElement extends HTMLElement {
+  return class PegaReferenceElement extends HTMLObjectElement {
     connectedCallback() {
       const template = document.createElement('template');
       const temp = document.importNode(template.content, true);

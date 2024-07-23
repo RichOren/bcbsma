@@ -1,19 +1,26 @@
 import { Configuration, Flex, useI18n, registerIcon, FormField } from '@pega/cosmos-react-core';
 import DynamicContentEditor from './DynamicContentEditor';
 import type { DynamicContentEditorProps, EditorState, ItemType } from '@pega/cosmos-react-rte';
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import FieldSelector from './FieldSelector';
 import type { FieldSelectorProps } from './FieldSelector';
 import * as Code from '@pega/cosmos-react-core/lib/components/Icon/icons/code.icon';
 
 type DynamicContentRTEProps = {
   label: string;
+  value: string;
 };
 registerIcon(Code);
 
 const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
-  const { label } = props;
+  const { label, value } = props;
+
   const rteRef = useRef<EditorState>(null);
+
+  useEffect(() => {
+    rteRef.current?.insertHtml(value, true);
+  }, [value]);
+
   const fieldItems: DynamicContentEditorProps['fieldItems'] = [
     {
       id: 'CustomerName',

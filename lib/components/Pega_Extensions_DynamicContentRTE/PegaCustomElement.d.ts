@@ -2,6 +2,36 @@ export declare const pegaReferenceElementStyle = "pega-reference {\n  color: #07
 export declare const createPegaReferenceElement: () => {
     new (): {
         connectedCallback(): void;
+        align: string;
+        archive: string;
+        border: string;
+        code: string;
+        codeBase: string;
+        codeType: string;
+        readonly contentDocument: Document | null;
+        readonly contentWindow: Window | null;
+        data: string;
+        declare: boolean;
+        readonly form: HTMLFormElement | null;
+        height: string;
+        hspace: number;
+        name: string;
+        standby: string;
+        type: string;
+        useMap: string;
+        readonly validationMessage: string;
+        readonly validity: ValidityState;
+        vspace: number;
+        width: string;
+        readonly willValidate: boolean;
+        checkValidity(): boolean;
+        getSVGDocument(): Document | null;
+        reportValidity(): boolean;
+        setCustomValidity(error: string): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLObjectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void;
+        removeEventListener<K_1 extends keyof HTMLElementEventMap>(type: K_1, listener: (this: HTMLObjectElement, ev: HTMLElementEventMap[K_1]) => any, options?: boolean | EventListenerOptions | undefined): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void;
         accessKey: string;
         readonly accessKeyLabel: string;
         autocapitalize: string;
@@ -22,10 +52,6 @@ export declare const createPegaReferenceElement: () => {
         translate: boolean;
         attachInternals(): ElementInternals;
         click(): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions | undefined): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void;
-        removeEventListener<K_1 extends keyof HTMLElementEventMap>(type: K_1, listener: (this: HTMLElement, ev: HTMLElementEventMap[K_1]) => any, options?: boolean | EventListenerOptions | undefined): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void;
         readonly attributes: NamedNodeMap;
         readonly classList: DOMTokenList;
         className: string;
