@@ -1,0 +1,32 @@
+{
+  "name": "Pega_Extensions_DynamicContentRTE",
+  "label": "Dynamic Content RTE",
+  "description": "Dynamic Content RTE",
+  "organization": "Pega",
+  "version": "1.0.0",
+  "library": "Extensions",
+  "allowedApplications": [],
+  "componentKey": "Pega_Extensions_DynamicContentRTE",
+  "type": "Field",
+  "subtype": "Text-Paragraph",
+  "properties": [
+    {
+      "name": "label",
+      "label": "Label value",
+      "format": "TEXT"
+    },
+    {
+      "key": "fieldMenuItems",
+      "format": "PROPERTY",
+      "name": "fieldMenuItems",
+      "label": "Field Menu Items",
+      "match": "propertyRef"
+    },
+    {
+      "name": "visibility",
+      "label": "Visible",
+      "format": "VISIBILITY"
+    }
+  ],
+  "defaultConfig": {}
+}

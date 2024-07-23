@@ -1,0 +1,1365 @@
+{
+  "Fields": [
+    {
+      "typeLabel": "Identifier",
+      "typeKey": "Pega-Fields-Scalar-Identifier",
+      "name": "AccountID",
+      "label": "Account ID"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "AccountList",
+      "label": "Account list",
+      "contextClass": "Common-LDM-Entity-Account",
+      "targetObjectClass": "Common-LDM-Entity-Account",
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Account"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "AccountName",
+      "label": "Account name"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "Rating",
+      "label": "Account rating"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "AccountToAccountLinkType",
+      "label": "Account to account relationship"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "AccountToContactLinkType",
+      "label": "Account to contact relationship"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "AccountToServiceAccountLinkType",
+      "label": "Account to service account relationship"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "Type",
+      "label": "Account type"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "AccountValue",
+      "label": "Account value"
+    },
+    {
+      "typeLabel": "Query",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "AccountsToAccount",
+      "label": "AccountsToAccount",
+      "contextClass": "Common-LDM-Entity-Account",
+      "targetObjectClass": "Common-LDM-Entity-Account",
+      "classKeys": [],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATIC",
+      "dataPageName": "D_Account_List",
+      "targetClassLabel": "Account",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"ACCOUNT_SUMMARY_LIST\"",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "searchCriteria",
+          "dataType": "string",
+          "defaultValue": ".searchCriteria_AccountsToAccount",
+          "required": false,
+          "description": "Search criteria for accounts to accounts"
+        },
+        {
+          "name": "RelationType",
+          "dataType": "string",
+          "defaultValue": "\"ACCOUNTSTOACCOUNT\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "AddressList",
+      "label": "Address list",
+      "contextClass": "Common-LDM-Data-ContactMethod-Address",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Address",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Address",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Address"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "AnnualIncomeAmount",
+      "label": "Annual income amount"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "AnnualRevenueAmount",
+      "label": "Annual revenue amount"
+    },
+    {
+      "typeLabel": "Query",
+      "name": "AssociatedChildAccounts",
+      "ruleClass": "Common-LDM-Entity-Account",
+      "targetObjectClass": "Common-LDM-Entity-Account",
+      "fieldClass": "Common-LDM-Entity-Account",
+      "label": "Associated child accounts",
+      "targetType": "Case",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "AUTOMATIC",
+      "classKeys": [],
+      "hasAliasKey": false
+    },
+    {
+      "typeLabel": "Query",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "AuthorizationsToAccount",
+      "label": "Authorizations to account",
+      "contextClass": "Common-LDM-Entity-Authorization",
+      "targetObjectClass": "Common-LDM-Entity-Authorization",
+      "classKeys": [],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATIC",
+      "dataPageName": "D_Authorization_List",
+      "targetClassLabel": "Authorization",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"AUTHORIZATION_SUMMARY_LIST\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchCriteria",
+          "dataType": "string",
+          "defaultValue": ".searchCriteria_AuthorizationsToAccount",
+          "required": false,
+          "description": "Searchcriteria for authorizations to account"
+        },
+        {
+          "name": "RelationType",
+          "dataType": "string",
+          "defaultValue": "\"AUTHORIZATIONSTOACCOUNT\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "BirthDate",
+      "label": "Birth date"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "BusinessUnitID",
+      "label": "Business unit id for account"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyID",
+      "label": "Case ID"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "ChurnRisk",
+      "label": "Churn risk"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "City",
+      "label": "City"
+    },
+    {
+      "targetClassLabel": "Contact",
+      "typeLabel": "Data Reference",
+      "name": "Contact",
+      "ruleClass": "Common-LDM-Entity-Contact",
+      "targetObjectClass": "Common-LDM-Entity-Contact",
+      "fieldClass": "Common",
+      "label": "Contact",
+      "targetType": "Case",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query-Reference-Data",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "AUTOMATIC",
+      "caseClass": "Common",
+      "classKeys": ["ContactID"],
+      "hasAliasKey": false
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "ContactName",
+      "label": "Contact name"
+    },
+    {
+      "typeLabel": "Query",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "ContactsToAccount",
+      "label": "Contacts to account",
+      "contextClass": "Common-LDM-Entity-Contact",
+      "targetObjectClass": "Common-LDM-Entity-Contact",
+      "classKeys": [],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATIC",
+      "dataPageName": "D_Contact_List",
+      "targetClassLabel": "Contact",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"CONTACT_SUMMARY_LIST\"",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "searchCriteria",
+          "dataType": "string",
+          "defaultValue": ".SearchCriteria_ContactsToAccount",
+          "required": false,
+          "description": "Search criteria to fetch contacts associated to account"
+        },
+        {
+          "name": "RelationType",
+          "dataType": "string",
+          "defaultValue": "\"CONTACTSTOACCOUNT\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "CountryID",
+      "label": "Country id for account"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "CreditScoreLevel",
+      "label": "Credit score level"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "CurrentBalanceAmount",
+      "label": "Current balance amount"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "CurrentDueAmount",
+      "label": "Current due amount"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "CurrentInteractionID",
+      "label": "Current interaction id"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "CurrentInteractionKey",
+      "label": "Current interaction key"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "CustomerSince",
+      "label": "Customer since date"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "CustomerTenure",
+      "label": "Customer tenure"
+    },
+    {
+      "typeLabel": "Text (paragraph)",
+      "typeKey": "Pega-Fields-Scalar-Text-Paragraph:pxTextArea",
+      "name": "Description",
+      "label": "Description value"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "DoingBusinessAs",
+      "label": "Doing business as"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "DueDate",
+      "label": "Due date"
+    },
+    {
+      "targetClassLabel": "All cases",
+      "typeLabel": "Query",
+      "name": "pyDuplicateCaseReference",
+      "ruleClass": "Work-",
+      "targetObjectClass": "Work-",
+      "fieldClass": "Work-Cover-",
+      "label": "Duplicate Case Reference",
+      "targetType": "Case",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "AUTOMATIC",
+      "caseClass": "Work-Cover-",
+      "classKeys": [],
+      "hasAliasKey": false
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyDuplicateID",
+      "label": "Duplicate ID"
+    },
+    {
+      "typeLabel": "Decimal",
+      "typeKey": "Pega-Fields-Scalar-Decimal",
+      "name": "pyEffortActual",
+      "label": "Effort Actual"
+    },
+    {
+      "typeLabel": "Decimal",
+      "typeKey": "Pega-Fields-Scalar-Decimal",
+      "name": "pyEffortEstimate",
+      "label": "Effort Estimate"
+    },
+    {
+      "typeLabel": "Decimal",
+      "typeKey": "Pega-Fields-Scalar-Decimal",
+      "name": "pyElapsedStatusNew",
+      "label": "Elapsed in Status New"
+    },
+    {
+      "typeLabel": "Decimal",
+      "typeKey": "Pega-Fields-Scalar-Decimal",
+      "name": "pyElapsedStatusOpen",
+      "label": "Elapsed in Status Open"
+    },
+    {
+      "typeLabel": "Decimal",
+      "typeKey": "Pega-Fields-Scalar-Decimal",
+      "name": "pyElapsedStatusPending",
+      "label": "Elapsed in Status Pending"
+    },
+    {
+      "typeLabel": "Email",
+      "typeKey": "Pega-Fields-Scalar-Text-Email",
+      "name": "Email",
+      "label": "Email"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "EmailList",
+      "label": "Email list",
+      "contextClass": "Common-LDM-Data-ContactMethod-Email",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Email",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Email",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Email"
+    },
+    {
+      "typeLabel": "Integer",
+      "typeKey": "Pega-Fields-Scalar-Integer",
+      "name": "EmployeeCount",
+      "label": "Employee count"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "EndDate",
+      "label": "End date"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "FaxList",
+      "label": "Fax list",
+      "contextClass": "Common-LDM-Data-ContactMethod-Fax",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Fax",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Fax",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Fax"
+    },
+    {
+      "typeLabel": "Decimal",
+      "typeKey": "Pega-Fields-Scalar-Decimal",
+      "name": "pxMatchScore",
+      "label": "Floating point score"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "HasHealthSavingsAccount",
+      "label": "Has health savings account"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "IncorporationCountry",
+      "label": "Incorporation country"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "Industry",
+      "label": "Industry for account"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "IndustryID",
+      "label": "Industry id"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "InitialInteractionID",
+      "label": "Initial interaction id"
+    },
+    {
+      "typeLabel": "Identifier",
+      "typeKey": "Pega-Fields-Scalar-Identifier",
+      "name": "pzInsKey",
+      "label": "Instance Handle Key"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "AdditionalVerificationRequired",
+      "label": "Is additional verification required"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsEditFlow",
+      "label": "Is edit flow"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsExternal",
+      "label": "Is external"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsPrimary",
+      "label": "Is primary"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsPrimaryAccount",
+      "label": "Is primary account"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsPrimaryContact",
+      "label": "Is primary contact"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsPrimaryServiceAccount",
+      "label": "Is primary service account"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsSelfService",
+      "label": "Is self service"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsTarget",
+      "label": "Is target"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "IsVerificationFailed",
+      "label": "Is verification failed"
+    },
+    {
+      "typeLabel": "Date & time",
+      "typeKey": "Pega-Fields-Scalar-DateTime",
+      "name": "LastDateOfEngagement",
+      "label": "Last date of engagement"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "LastPaymentAmount",
+      "label": "Last payment amount"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "LastPaymentDate",
+      "label": "Last payment date"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "LastStatementAmount",
+      "label": "Last statement amount"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "LastStatementDate",
+      "label": "Last statement date"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "LegalName",
+      "label": "Legal name"
+    },
+    {
+      "typeLabel": "Integer",
+      "typeKey": "Pega-Fields-Scalar-Integer",
+      "name": "LifetimeValue",
+      "label": "Lifetime value"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "LifetimeValueLevel",
+      "label": "Lifetime value level"
+    },
+    {
+      "typeLabel": "Query",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "LocationsToAccount",
+      "label": "Locations to account",
+      "contextClass": "Common-LDM-Entity-Location",
+      "targetObjectClass": "Common-LDM-Entity-Location",
+      "classKeys": [],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATIC",
+      "dataPageName": "D_Location_List",
+      "targetClassLabel": "Location",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"LOCATION_SUMMARY_LIST\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchCriteria",
+          "dataType": "string",
+          "defaultValue": ".searchCriteria_LocationsToAccount",
+          "required": false,
+          "description": "Used to form json"
+        },
+        {
+          "name": "RelationType",
+          "dataType": "string",
+          "defaultValue": "\"LOCATIONSTOACCOUNT\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "MiddleName",
+      "label": "Middle name"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "Name",
+      "label": "Name"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxRadioButtons",
+      "name": "IsNewOrExisting",
+      "label": "New or existing"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "NextStatementDate",
+      "label": "Next statement date"
+    },
+    {
+      "typeLabel": "Text (paragraph)",
+      "typeKey": "Pega-Fields-Scalar-Text-Paragraph:pxTextArea",
+      "name": "pyNote",
+      "label": "Notes"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "OrganizationRelationships",
+      "label": "Organization relationships",
+      "contextClass": "Common-LDM-Relation-Acct_Con",
+      "targetObjectClass": "Common-LDM-Relation-Acct_Con",
+      "ruleClass": "Common-LDM-Relation-Acct_Con",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Account_Contact"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "OrganizationType",
+      "label": "Organization type"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "Origin",
+      "label": "Origin of data"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyOwnerDivision",
+      "label": "Owner Division"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyOwnerOrg",
+      "label": "Owner Organization"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyOwnerOrgUnit",
+      "label": "Owner OrgUnit"
+    },
+    {
+      "typeLabel": "Percentage",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Percentage",
+      "name": "OwnershipPercent",
+      "label": "Ownership percent"
+    },
+    {
+      "targetClassLabel": "Account",
+      "typeLabel": "Data Reference",
+      "name": "ParentAccount",
+      "ruleClass": "Common-LDM-Entity-Account",
+      "targetObjectClass": "Common-LDM-Entity-Account",
+      "fieldClass": "Common",
+      "label": "Parent account",
+      "targetType": "Case",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query-Reference-Data",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "AUTOMATIC",
+      "caseClass": "Common",
+      "classKeys": ["AccountID"],
+      "hasAliasKey": false
+    },
+    {
+      "targetClassLabel": "Payment class",
+      "typeLabel": "Query",
+      "name": "Payment",
+      "ruleClass": "Common-LDM-Data-Payment",
+      "targetObjectClass": "Common-LDM-Data-Payment",
+      "fieldClass": "Work-",
+      "label": "Payment details",
+      "targetType": "Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "AUTOMATICNONREF",
+      "classKeys": [],
+      "hasAliasKey": false
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "PaymentMethodsList",
+      "label": "Payment methods list",
+      "contextClass": "Common-LDM-Data-PaymentMethod",
+      "targetObjectClass": "Common-LDM-Data-PaymentMethod",
+      "ruleClass": "Common-LDM-Data-PaymentMethod",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Payment method"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "PhoneList",
+      "label": "Phone list",
+      "contextClass": "Common-LDM-Data-ContactMethod-Phone",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Phone",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Phone",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Phone"
+    },
+    {
+      "typeLabel": "Phone",
+      "typeKey": "Pega-Fields-Scalar-Text-Phone",
+      "name": "PhoneNumber",
+      "label": "Phone number"
+    },
+    {
+      "typeLabel": "Date & time",
+      "typeKey": "Pega-Fields-Scalar-DateTime",
+      "name": "PlanEffectiveDate",
+      "label": "Plan efffective date"
+    },
+    {
+      "typeLabel": "Date & time",
+      "typeKey": "Pega-Fields-Scalar-DateTime",
+      "name": "PlanEndDate",
+      "label": "Plan end date"
+    },
+    {
+      "targetClassLabel": "Address",
+      "typeLabel": "Embedded Data",
+      "name": "PrimaryAddress",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Address",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Address",
+      "fieldClass": "Common-LDM-Entity",
+      "label": "Primary address",
+      "targetType": "Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "MANUAL"
+    },
+    {
+      "targetClassLabel": "Contact",
+      "typeLabel": "Embedded Data",
+      "name": "PrimaryContactOfOrganization",
+      "ruleClass": "Common-LDM-Entity-Contact",
+      "targetObjectClass": "Common-LDM-Entity-Contact",
+      "fieldClass": "Common-LDM",
+      "label": "Primary contact of organization",
+      "targetType": "Case",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "MANUAL"
+    },
+    {
+      "targetClassLabel": "Email",
+      "typeLabel": "Embedded Data",
+      "name": "PrimaryEmail",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Email",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Email",
+      "fieldClass": "Common-LDM-Entity",
+      "label": "Primary email",
+      "targetType": "Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "MANUAL"
+    },
+    {
+      "targetClassLabel": "Fax",
+      "typeLabel": "Embedded Data",
+      "name": "PrimaryFax",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Fax",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Fax",
+      "fieldClass": "Common-LDM-Entity",
+      "label": "Primary fax",
+      "targetType": "Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "MANUAL"
+    },
+    {
+      "targetClassLabel": "Phone",
+      "typeLabel": "Embedded Data",
+      "name": "PrimaryPhone",
+      "ruleClass": "Common-LDM-Data-ContactMethod-Phone",
+      "targetObjectClass": "Common-LDM-Data-ContactMethod-Phone",
+      "fieldClass": "Common-LDM-Entity",
+      "label": "Primary phone",
+      "targetType": "Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "MANUAL"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "RegionID",
+      "label": "Region / State"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "RegionCode",
+      "label": "Region code"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "RelationEndDate",
+      "label": "Relation end date"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "RelationStartDate",
+      "label": "Relation start date"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "LinkType",
+      "label": "Relationship"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "Relationship",
+      "label": "Relationship between two entities"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "RelationshipType",
+      "label": "Relationship type"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyResolvedDivision",
+      "label": "Resolved by Division"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyResolvedOrg",
+      "label": "Resolved by Organization"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyResolvedOrgUnit",
+      "label": "Resolved by OrgUnit"
+    },
+    {
+      "typeLabel": "User Reference",
+      "displayAs": "Search box",
+      "typeKey": "Pega-Fields-Scalar-Text-UserReference",
+      "name": "pyResolvedUserID",
+      "label": "Resolved by User"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "pyResolvedUserWorkgroup",
+      "label": "Resolved User Workgroup"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "Revenue",
+      "label": "Revenue amount"
+    },
+    {
+      "typeLabel": "Percentage",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Percentage",
+      "name": "RevenueChangeAmount",
+      "label": "Revenue change amount"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "ReverseRelationship",
+      "label": "Reverse relationship between two entities"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "SampleID",
+      "label": "Sample id"
+    },
+    {
+      "typeLabel": "Case Reference",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query-Reference-Case",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SearchContacts",
+      "label": "Search contacts",
+      "contextClass": "Common-LDM-Entity-Contact",
+      "targetObjectClass": "Common-LDM-Entity-Contact",
+      "classKeys": ["ContactID"],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATICNONREF",
+      "dataPageName": "D_Contact",
+      "targetType": "Case",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"CONTACT_DETAIL\"",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ContactID",
+          "dataType": "string",
+          "defaultValue": ".SearchContacts.ContactID",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "searchCriteria_CategoryID",
+      "label": "Search criteria category id"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "searchCriteria_AccountsToAccount",
+      "label": "Search criteria for accounts to accounts"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "searchCriteria_ServiceAccountsToAccount",
+      "label": "Search criteria for service accounts to account"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "SearchCriteria_ContactsToAccount",
+      "label": "Search criteria to fetch contacts associated to account"
+    },
+    {
+      "typeLabel": "Case Reference",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query-Reference-Case",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SearchServiceAccounts",
+      "label": "Search service accounts",
+      "contextClass": "Common-LDM-Entity-ServiceAccount",
+      "targetObjectClass": "Common-LDM-Entity-ServiceAccount",
+      "classKeys": ["ServiceAccountID"],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATIC",
+      "dataPageName": "D_ServiceAccount",
+      "targetType": "Case",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"SERVICEACCOUNT_DETAIL\"",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ServiceAccountID",
+          "dataType": "string",
+          "defaultValue": ".SearchServiceAccounts.ServiceAccountID",
+          "required": true,
+          "description": "Service account ID"
+        }
+      ]
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "searchCriteria_AuthorizationsToAccount",
+      "label": "Searchcriteria for authorizations to account"
+    },
+    {
+      "typeLabel": "Data Reference",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query-Reference-Data",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectContactRelationships",
+      "label": "Select contact relationships",
+      "contextClass": "Common-LDM-Relation-Acct_Con",
+      "targetObjectClass": "Common-LDM-Relation-Acct_Con",
+      "classKeys": ["pyGUID"],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATICNONREF",
+      "dataPageName": "D_Relation_Acct_Con",
+      "targetType": "Data",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"REL_ACCOUNTTOCONTACT_DETAIL\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "RelationID",
+          "dataType": "string",
+          "defaultValue": ".SelectContactRelationships.pyGUID",
+          "required": false,
+          "description": "Globally unique ID"
+        },
+        {
+          "name": "GetAdditionalDetails",
+          "dataType": "string",
+          "defaultValue": "",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Data Reference",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query-Reference-Data",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectServiceAccountRelationships",
+      "label": "Select service account relationships",
+      "contextClass": "Common-LDM-Relation-Acct_SvcAcct",
+      "targetObjectClass": "Common-LDM-Relation-Acct_SvcAcct",
+      "classKeys": ["pyGUID"],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATICNONREF",
+      "dataPageName": "D_Relation_Acct_SvcAcct",
+      "targetType": "Data",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"REL_ACCOUNTTOSERVICEACCOUNT_DETAIL\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "RelationID",
+          "dataType": "string",
+          "defaultValue": ".SelectServiceAccountRelationships.pyGUID",
+          "required": false,
+          "description": "Globally unique ID"
+        },
+        {
+          "name": "GetAdditionalDetails",
+          "dataType": "string",
+          "defaultValue": "",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectedAcctConRelationships",
+      "label": "Selected account contact relationships",
+      "contextClass": "Common-LDM-Relation-Acct_Con",
+      "targetObjectClass": "Common-LDM-Relation-Acct_Con",
+      "ruleClass": "Common-LDM-Relation-Acct_Con",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Account_Contact"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectedAcctSvcAcctRelationships",
+      "label": "Selected account service account relationships",
+      "contextClass": "Common-LDM-Relation-Acct_SvcAcct",
+      "targetObjectClass": "Common-LDM-Relation-Acct_SvcAcct",
+      "ruleClass": "Common-LDM-Relation-Acct_SvcAcct",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Acct_SvcAcct"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectedAccounts",
+      "label": "Selected accounts",
+      "contextClass": "Common-LDM-Entity-Account",
+      "targetObjectClass": "Common-LDM-Entity-Account",
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Account"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "SelectedAsset",
+      "label": "Selected asset"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectedContacts",
+      "label": "Selected contacts",
+      "contextClass": "Common-LDM-Entity-Contact",
+      "targetObjectClass": "Common-LDM-Entity-Contact",
+      "ruleClass": "Common-LDM-Entity-Contact",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Contact"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "SelectedServiceAccounts",
+      "label": "Selected service accounts",
+      "contextClass": "Common-LDM-Entity-ServiceAccount",
+      "targetObjectClass": "Common-LDM-Entity-ServiceAccount",
+      "ruleClass": "Common-LDM-Entity-ServiceAccount",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Service account"
+    },
+    {
+      "typeLabel": "Embedded Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "ServiceAccountRelationships",
+      "label": "Service account relationships",
+      "contextClass": "Common-LDM-Relation-Con_SvcAcct",
+      "targetObjectClass": "Common-LDM-Relation-Con_SvcAcct",
+      "ruleClass": "Common-LDM-Relation-Con_SvcAcct",
+      "dataRetrievalType": "MANUAL",
+      "dataPageName": null,
+      "targetClassLabel": "Contact_ServiceAccount"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "cxServiceAccountToContactLinkType",
+      "label": "Service account to contact link type"
+    },
+    {
+      "typeLabel": "Query",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded-Query",
+      "typeKey": "Pega-Fields-Complex-List",
+      "name": "ServiceAccountsToAccount",
+      "label": "Service accounts to account",
+      "contextClass": "Common-LDM-Entity-ServiceAccount",
+      "targetObjectClass": "Common-LDM-Entity-ServiceAccount",
+      "classKeys": [],
+      "hasAliasKey": false,
+      "ruleClass": "Common-LDM-Entity-Account",
+      "dataRetrievalType": "AUTOMATIC",
+      "dataPageName": "D_ServiceAccount_List",
+      "targetClassLabel": "Service account",
+      "parameters": [
+        {
+          "name": "Profile",
+          "dataType": "string",
+          "defaultValue": "\"SERVICEACCOUNT_SUMMARY_LIST\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchCriteria",
+          "dataType": "string",
+          "defaultValue": ".searchCriteria_ServiceAccountsToAccount",
+          "required": false,
+          "description": "Search criteria for service accounts to account"
+        },
+        {
+          "name": "RelationType",
+          "dataType": "string",
+          "defaultValue": "\"SERVICEACCOUNTSTOACCOUNT\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "ServiceCaseClass",
+      "label": "Service case class"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "ServiceCaseLabel",
+      "label": "Service case label"
+    },
+    {
+      "typeLabel": "Boolean",
+      "typeKey": "Pega-Fields-Scalar-Boolean",
+      "name": "czSkipEformGeneration",
+      "label": "Skip eform generation"
+    },
+    {
+      "typeLabel": "Date & time",
+      "typeKey": "Pega-Fields-Scalar-DateTime",
+      "name": "pySLAGoal",
+      "label": "SLA Goal"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxRadioButtons",
+      "name": "pySLAStartTime",
+      "label": "SLA Start Time"
+    },
+    {
+      "typeLabel": "Date only",
+      "typeKey": "Pega-Fields-Scalar-Date",
+      "name": "StartDate",
+      "label": "Start date"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "IncorporationState",
+      "label": "State of incorporation"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "Status",
+      "label": "Status"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "SubStatus",
+      "label": "Sub status"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "SubType",
+      "label": "Sub type"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "TaxID",
+      "label": "Tax id"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "text",
+      "label": "text val"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "Ticker",
+      "label": "Ticker symbol"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "TotalAssetsAmount",
+      "label": "Total assets amount"
+    },
+    {
+      "typeLabel": "Currency",
+      "typeKey": "Pega-Fields-Scalar-Decimal-Currency",
+      "name": "TotalLiabilitiesAmount",
+      "label": "Total liabilities amount"
+    },
+    {
+      "typeLabel": "Picklist",
+      "typeKey": "Pega-Fields-Scalar-Picklist:pxDropdown",
+      "name": "Currency",
+      "label": "Type of currency"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "VerificationAttemptIndicator",
+      "label": "Verification attempt indicator"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "VerificationFailureIndicator",
+      "label": "Verification failure indicator"
+    },
+    {
+      "targetClassLabel": "Digital wallet class",
+      "typeLabel": "Embedded Data",
+      "name": "Wallet",
+      "ruleClass": "Common-LDM-Data-Wallet",
+      "targetObjectClass": "Common-LDM-Data-Wallet",
+      "fieldClass": "Work-",
+      "label": "Wallet wrapper",
+      "targetType": "Data",
+      "embeddedTypeKey": "Pega-Fields-Complex-Embedded",
+      "typeKey": "Pega-Fields-Complex-Page",
+      "dataRetrievalType": "MANUAL"
+    },
+    {
+      "typeLabel": "URL",
+      "typeKey": "Pega-Fields-Scalar-Text-URL",
+      "name": "Website",
+      "label": "Website property"
+    },
+    {
+      "typeLabel": "Text (single line)",
+      "typeKey": "Pega-Fields-Scalar-Text",
+      "name": "czWrapperCaseID",
+      "label": "Wrapper case id"
+    }
+  ]
+}
