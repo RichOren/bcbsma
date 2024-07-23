@@ -24,7 +24,7 @@ import { getKeyCommand } from '@pega/cosmos-react-rte/lib/components/RichTextEdi
 import { Editor } from '@pega/cosmos-react-rte';
 import type { EditorProps } from '@pega/cosmos-react-rte';
 
-import { isFieldMenuItem } from '@pega/cosmos-react-rte/lib/components/DynamicContentEditor/DynamicContentEditor.types';
+import { isFieldMenuItem } from './DynamicContentEditor.types';
 import type {
   DynamicContentEditorProps,
   FieldItems,
@@ -46,6 +46,7 @@ StyledDynamicContentEditor.defaultProps = defaultThemeProp;
 const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & ForwardProps> =
   forwardRef(function DynamicContentEditor(
     {
+      getPConnect,
       testId,
       form: { dynamicContentPicker, onSubmit },
       onActiveFieldChange,
@@ -53,12 +54,17 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
       toolbar,
       fieldItems,
       defaultValue,
+      value,
       onBlur,
       onKeyDown: onKeyDownProp,
       ...restProps
     }: PropsWithoutRef<DynamicContentEditorProps>,
     ref: DynamicContentEditorProps['ref']
   ) {
+    const pConn = getPConnect();
+    const actions = pConn.getActionsApi();
+    const propName = pConn.getStateProps().value;
+    const hasValueChange = useRef(false);
     const testIds = useTestIds(testId, getDynamicContentEditorTestIds);
     const menuID = useUID();
     const { create } = useModalManager();
@@ -68,6 +74,7 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
     const [editor, setEditor] = useState<TinyMCEEditor | undefined>();
     const [bookmark, setBookmark] = useState<Bookmark | undefined>();
     const [fieldMenuItems, setFieldMenuItems] = useState<FieldItems[]>(fieldItems || []);
+    const [inputValue, setInputValue] = useState(value);
     const [currentElementId, setCurrentElementId] = useState('');
     const [currentElementContent, setCurrentElementContent] = useState('');
     const [currentElementNamespace, setCurrentElementNamespace] = useState('');
@@ -300,7 +307,10 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
       }
     }, [modalProps]);
 
-    const onEditorChange: EditorProps['onChange'] = (formEditor?: TinyMCEEditor) => {
+    const onEditorChange: EditorProps['onChange'] = (
+      formEditor?: TinyMCEEditor,
+      e?: React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
       if (formEditor) {
         const targetEl = formEditor.selection.getBoundingClientRect();
         const { left = 0, top = 0 } = targetEl ?? {};
@@ -326,6 +336,12 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
           ) {
             filterFieldMenu(fieldString.slice(1));
           } else setShowFieldsPopover(false);
+        }
+
+        setInputValue(e?.currentTarget.value);
+        if (value !== e?.currentTarget.value) {
+          actions.updateFieldValue(propName, e?.currentTarget.value);
+          hasValueChange.current = true;
         }
       }
     };
@@ -389,6 +405,7 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
         }}
         onKeyDown={onKeyDown}
         defaultValue={defaultValue}
+        value={inputValue}
       >
         {fieldSelectionPopover}
       </Editor>
