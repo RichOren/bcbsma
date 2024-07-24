@@ -96,9 +96,30 @@ export const DynamicContentEditorDemo: StoryFn<Partial<DynamicContentEditorStory
     setSelectedField(selectedItem);
   };
 
+  function convertString(input: string): string {
+    // Use DOMParser to parse the input string as HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(input, 'text/html');
+
+    // Get all pega-reference elements
+    const references = doc.querySelectorAll('pega-reference');
+
+    // Loop through each reference and update it
+    references.forEach(reference => {
+      const name = reference.getAttribute('data-rule-id') || '';
+      const newReference = document.createElement('pega:reference');
+      newReference.setAttribute('name', name);
+      reference.replaceWith(newReference);
+    });
+
+    // Return the updated HTML as a string
+    return doc.body.innerHTML;
+  }
+
   const onSubmit = useCallback(
     (insertField: (selectedItem: ItemType) => void) => {
       insertField(selectedField);
+      console.log(convertString(rteRef.current?.getHtml() ?? ''));
     },
     [selectedField]
   );

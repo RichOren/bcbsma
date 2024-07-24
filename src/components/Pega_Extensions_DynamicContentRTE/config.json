@@ -16,13 +16,6 @@
       "format": "TEXT"
     },
     {
-      "key": "fieldMenuItems",
-      "format": "PROPERTY",
-      "name": "fieldMenuItems",
-      "label": "Field Menu Items",
-      "match": "propertyRef"
-    },
-    {
       "name": "visibility",
       "label": "Visible",
       "format": "VISIBILITY"

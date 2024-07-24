@@ -23,7 +23,7 @@ const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
 
   const fieldItems: DynamicContentEditorProps['fieldItems'] = [
     {
-      id: 'CustomerName',
+      id: 'Param.CustomerName',
       primary: 'CustomerName',
       namespace: 'XCompass',
       items: [
@@ -72,9 +72,31 @@ const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
   const updateSelection: FieldSelectorProps['updateSelection'] = (selectedItem: ItemType) => {
     setSelectedField(selectedItem);
   };
+
+  function convertString(input: string): string {
+    // Use DOMParser to parse the input string as HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(input, 'text/html');
+
+    // Get all pega-reference elements
+    const references = doc.querySelectorAll('pega-reference');
+
+    // Loop through each reference and update it
+    references.forEach(reference => {
+      const name = reference.getAttribute('data-rule-id') || '';
+      const newReference = document.createElement('pega:reference');
+      newReference.setAttribute('name', name);
+      reference.replaceWith(newReference);
+    });
+
+    // Return the updated HTML as a string
+    return doc.body.innerHTML;
+  }
+
   const onSubmit = useCallback(
     (insertField: (field: ItemType) => void) => {
       insertField(selectedField);
+      console.log(convertString(rteRef.current?.getHtml() ?? ''));
     },
     [selectedField]
   );

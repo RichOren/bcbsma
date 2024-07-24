@@ -96,7 +96,11 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
     const insertField = (field: ItemType) => {
       if (!editor) return;
 
-      const fieldContent = `<pega:reference role="button" contenteditable="false" name=${field.id}>${field.text}</pega:reference>`;
+      const fieldContent = `<pega-reference role="button" contenteditable="false" name=${
+        field.id
+      } data-rule-type='field' data-rule-id=${field.id} ${
+        field.namespace && `data-rule-namespace=${field.namespace}`
+      }>${field.text}</pega-reference>`;
       if (bookmark) {
         editor.selection.moveToBookmark(bookmark);
         editor.selection.setContent(fieldContent);
@@ -171,7 +175,11 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
       const selectedField = menuHelpers.getItem(fieldMenuItems, fieldId);
       if (selectedField && isFieldMenuItem(selectedField)) {
         editor.selection.setContent(
-          `<pega:reference role="button" contenteditable="false" name="${selectedField.id}">${selectedField.primary}</pega:reference>`
+          `<pega-reference role="button" contenteditable="false" name="${
+            selectedField.id
+          }" data-rule-type="field" data-rule-id="${selectedField.id}" ${
+            selectedField.namespace && `data-rule-namespace=${selectedField.namespace}`
+          }>${selectedField.primary}</pega-reference>`
         );
         setShowFieldsPopover(false);
       }
@@ -353,8 +361,8 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
         customComponents={[
           {
             createCustomElement: createPegaReferenceElement,
-            name: 'pega:reference',
-            extensionAttributes: ['name'],
+            name: 'pega-reference',
+            extensionAttributes: ['contenteditable', 'name'],
             style: pegaReferenceElementStyle
           }
         ]}
