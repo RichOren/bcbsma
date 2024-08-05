@@ -1,0 +1,2 @@
+export declare const getGenAICoachTestIds: (testIdProp?: string | null | undefined) => import("@pega/cosmos-react-core").TestIdsRecord<readonly ["chat", "coach-name", "additional-info", "history", "question-area", "type-indicator", "text-area", "send"]>;
+//# sourceMappingURL=GenAICoach.test-ids.d.ts.map

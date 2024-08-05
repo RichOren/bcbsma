@@ -1,25 +1,81 @@
-import { Configuration, Flex, useI18n, registerIcon, FormField } from '@pega/cosmos-react-core';
+import {
+  Configuration,
+  Flex,
+  useI18n,
+  registerIcon,
+  FormField,
+  useToaster
+} from '@pega/cosmos-react-core';
 import DynamicContentEditor from './DynamicContentEditor';
 import type { DynamicContentEditorProps, EditorState, ItemType } from '@pega/cosmos-react-rte';
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useCallback, useEffect, useMemo } from 'react';
 import FieldSelector from './FieldSelector';
 import type { FieldSelectorProps } from './FieldSelector';
 import * as Code from '@pega/cosmos-react-core/lib/components/Icon/icons/code.icon';
+import handleEvent from './utils/event-utils';
 
 type DynamicContentRTEProps = {
   label: string;
   value: string;
+  getPConnect: any;
+  fieldMetadata?: any;
 };
 registerIcon(Code);
 
 const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
-  const { label, value } = props;
-
+  const { label, value, getPConnect, fieldMetadata } = props;
+  const pConn = getPConnect();
+  const { enableRTEImageAttachments = false } =
+    (window as any).PCore.getEnvironmentInfo().environmentInfoObject?.features?.form || {};
   const rteRef = useRef<EditorState>(null);
+  const toasterContext = useToaster();
+  const actionSequencer = useMemo(() => (window as any).PCore.getActionsSequencer(), []);
+  const actionsApi = pConn.getActionsApi();
+  const fieldAdditionalInfo = fieldMetadata?.additionalInformation;
+  const additionalInfo = fieldAdditionalInfo
+    ? {
+        content: fieldAdditionalInfo
+      }
+    : undefined;
+  function reverseConvertString(input: string): string {
+    // Use DOMParser to parse the input string as HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(input, 'text/html');
+
+    // Get all pega:reference elements
+    const references = doc.querySelectorAll('pega\\:reference');
+
+    // Loop through each reference and update it
+    references.forEach(reference => {
+      const name = reference.getAttribute('name') || '';
+      const newReference = document.createElement('pega-reference');
+      newReference.setAttribute('role', 'button');
+      newReference.setAttribute('contenteditable', 'false');
+      newReference.setAttribute('data-rule-type', 'field');
+      newReference.setAttribute('data-rule-id', name);
+      newReference.setAttribute('data-rule-namespace', 'XCompass'); // or PegaPlatform, depending on the context
+      newReference.textContent = name;
+      reference.replaceWith(newReference);
+    });
+
+    // Return the updated HTML as a string
+    return doc.body.innerHTML;
+  }
 
   useEffect(() => {
-    rteRef.current?.insertHtml(value, true);
-  }, [value]);
+    const outputString = reverseConvertString(value);
+    console.log(outputString);
+    if (rteRef.current) {
+      const editorValue = rteRef.current?.insertHtml(value, true);
+      const property = pConn.getStateProps().value;
+      if (editorValue === null || editorValue === undefined) {
+        pConn.getValidationApi().validate(editorValue);
+      }
+      if (editorValue !== null && editorValue !== undefined && value !== editorValue) {
+        handleEvent(actionsApi, 'change', property, editorValue);
+      }
+    }
+  }, [actionsApi, pConn, value]);
 
   const fieldItems: DynamicContentEditorProps['fieldItems'] = [
     {
@@ -58,10 +114,10 @@ const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
     { id: 'Iconname', primary: 'Iconname' }
   ];
 
-  const onImageAdded = (image: File, id: string) => {
+  /* const onImageAdded = (image: File, id: string) => {
     const src = URL.createObjectURL(image);
     rteRef.current?.appendImage({ src, alt: image.name }, id);
-  };
+  }; */
 
   const t = useI18n();
   const [selectedField, setSelectedField] = useState<ItemType>({
@@ -93,13 +149,82 @@ const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
     return doc.body.innerHTML;
   }
 
+  useEffect(() => {
+    const sConvertString = convertString(value);
+    console.log(sConvertString);
+    const editorValue = sConvertString;
+
+    if (editorValue === null || editorValue === undefined) {
+      pConn.getValidationApi().validate(editorValue, '.CorrText');
+    }
+    if (editorValue !== null && editorValue !== undefined && value !== editorValue) {
+      // pConn.setValue('.corrHTML', editorValue);
+      handleEvent(actionsApi, 'change', '.CorrText', editorValue);
+    }
+  }, [actionsApi, pConn, value]);
+
+  const handleBlur = () => {
+    if (rteRef.current) {
+      const editorValue = rteRef.current.getHtml();
+      const property = pConn.getStateProps().value;
+      if (!editorValue) {
+        pConn.getValidationApi().validate(editorValue);
+      }
+      if (value !== editorValue) {
+        handleEvent(actionsApi, 'changeNblur', property, editorValue);
+      }
+    }
+  };
+
   const onSubmit = useCallback(
     (insertField: (field: ItemType) => void) => {
       insertField(selectedField);
-      console.log(convertString(rteRef.current?.getHtml() ?? ''));
+      convertString(rteRef.current?.getHtml() ?? '');
     },
+
     [selectedField]
   );
+
+  const onImageAdded = (image: any, id: any) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (enableRTEImageAttachments) {
+        actionSequencer.registerBlockingAction(pConn.getContextName()).then(() => {
+          (window as any).PCore.getAttachmentUtils()
+            .uploadAttachment(
+              image,
+              () => {},
+              () => {},
+              pConn.getContextName()
+            )
+            .then((response: any) => {
+              const relativePath = (window as any).PCore.getAttachmentUtils().getAttachmentURL(
+                response.ID
+              );
+              rteRef.current?.appendImage(
+                { src: relativePath, alt: image.name, attachmentId: response.ID },
+                id
+              );
+              const editorValue = rteRef.current?.getHtml();
+              const property = pConn.getStateProps().value;
+              handleEvent(actionsApi, 'change', property, editorValue);
+              actionSequencer.deRegisterBlockingAction(pConn.getContextName()).catch(() => {});
+            })
+            .catch(() => {
+              rteRef.current?.appendImage({ src: '', alt: '' }, id);
+              const uploadFailMsg = pConn.getLocalizedValue('Upload failed');
+              toasterContext.push({
+                content: uploadFailMsg
+              });
+              actionSequencer.cancelDeferredActionsOnError(pConn.getContextName());
+            });
+        });
+      } else {
+        rteRef.current?.appendImage({ src: reader.result as string, alt: image.name }, id);
+      }
+    };
+    reader.readAsDataURL(image);
+  };
 
   const dynamicContentPicker = (
     <Flex
@@ -139,6 +264,8 @@ const PegaExtensionsDynamicContentRTE = (props: DynamicContentRTEProps) => {
             form={{ onSubmit, dynamicContentPicker }}
             onActiveFieldChange={onActiveFieldChange}
             fieldItems={fieldItems}
+            onBlur={handleBlur}
+            additionalInfo={additionalInfo}
           />
         </Flex>
       </FormField>

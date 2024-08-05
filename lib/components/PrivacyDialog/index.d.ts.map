@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/components/PrivacyDialog/index.tsx"],"names":[],"mappings":"AAYA,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,yBAAyB,CAAC;AAM1D,UAAU,kBAAmB,SAAQ,UAAU;IAC7C,WAAW,EAAE,GAAG,CAAC;IACjB,iBAAiB,EAAE,CAAC,qBAAqB,EAAE,OAAO,KAAK,IAAI,CAAC;CAC7D;sEAEuE,kBAAkB;;;AAA1F,wBAiE4B"}

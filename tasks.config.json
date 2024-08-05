@@ -2,7 +2,7 @@
   "components-directory-path": "src/components",
   "server-config": {
     "rulesetName": "CustomDXComponents",
-    "rulesetVersion": "01-01-01",
+    "rulesetVersion": "01-01-04",
     "sourceOfComponents": "Server",
     "devBuild": false,
     "serverType": "infinity",

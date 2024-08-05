@@ -1,0 +1,4 @@
+export function formatExists(formatterVal: any): boolean;
+export function textFormatter(formatter: any, value: any): any;
+export function urlFormatter(value: string, options: object): import("react/jsx-runtime").JSX.Element;
+//# sourceMappingURL=textformat-utils.d.ts.map

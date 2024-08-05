@@ -1,0 +1,1 @@
+{"version":3,"file":"useRecordsFromDataPageContext.d.ts","sourceRoot":"","sources":["../../src/hooks/useRecordsFromDataPageContext.ts"],"names":[],"mappings":"AAWA,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,iBAAiB,CAAC;AAEvD,MAAM,CAAC,OAAO,UAAU,6BAA6B,CACnD,QAAQ,CAAC,EAAE,MAAM,GAChB,IAAI,CAAC,eAAe,EAAE,QAAQ,GAAG,cAAc,CAAC,GAAG,SAAS,CAuC9D"}

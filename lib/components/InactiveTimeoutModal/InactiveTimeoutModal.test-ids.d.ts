@@ -1,0 +1,2 @@
+export declare const getInactiveTimeoutModalIds: (testIdProp?: string | null | undefined) => import("@pega/cosmos-react-core").TestIdsRecord<readonly ["log-out", "continue", "message", "expiry-time", "log-in"]>;
+//# sourceMappingURL=InactiveTimeoutModal.test-ids.d.ts.map

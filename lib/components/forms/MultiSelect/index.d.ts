@@ -1,0 +1,105 @@
+declare const _default: import("react").MemoExoticComponent<typeof MultiSelect>;
+export default _default;
+declare function MultiSelect(props: any): import("react/jsx-runtime").JSX.Element;
+declare namespace MultiSelect {
+    namespace defaultProps {
+        const value: string;
+        const matchPosition: string;
+        const maxResultsDisplay: string;
+        const placeholder: string;
+        const hideLabel: boolean;
+        const validatemessage: string;
+        const helperText: string;
+        const readOnly: boolean;
+        const required: boolean;
+        const testId: null;
+        const datasource: never[];
+        const listType: string;
+        const parameters: {};
+        const initialCaseClass: string;
+        const columns: {}[];
+        const isGroupData: boolean;
+        const groupDataSource: never[];
+        const groupColumnsConfig: {}[];
+        const showSecondaryInSearchOnly: boolean;
+        const additionalProps: {};
+        const referenceList: string;
+        const selectionKey: string;
+        const primaryField: string;
+        const referenceType: null;
+        const readonlyContextList: never[];
+        const selectionList: null;
+        const secondaryFields: undefined;
+        const cacheLifeSpan: string;
+        const compositeKeys: undefined;
+    }
+    namespace propTypes {
+        const value_1: PropTypes.Requireable<string>;
+        export { value_1 as value };
+        const maxResultsDisplay_1: PropTypes.Requireable<string>;
+        export { maxResultsDisplay_1 as maxResultsDisplay };
+        const matchPosition_1: PropTypes.Requireable<string>;
+        export { matchPosition_1 as matchPosition };
+        const placeholder_1: PropTypes.Requireable<string>;
+        export { placeholder_1 as placeholder };
+        export const label: PropTypes.Validator<string>;
+        const hideLabel_1: PropTypes.Requireable<boolean>;
+        export { hideLabel_1 as hideLabel };
+        export const getPConnect: PropTypes.Validator<(...args: any[]) => any>;
+        const validatemessage_1: PropTypes.Requireable<string>;
+        export { validatemessage_1 as validatemessage };
+        const helperText_1: PropTypes.Requireable<string>;
+        export { helperText_1 as helperText };
+        const readOnly_1: PropTypes.Requireable<NonNullable<string | boolean | null | undefined>>;
+        export { readOnly_1 as readOnly };
+        const required_1: PropTypes.Requireable<NonNullable<string | boolean | null | undefined>>;
+        export { required_1 as required };
+        const testId_1: PropTypes.Requireable<string>;
+        export { testId_1 as testId };
+        const datasource_1: PropTypes.Requireable<NonNullable<string | any[] | null | undefined>>;
+        export { datasource_1 as datasource };
+        const listType_1: PropTypes.Requireable<string>;
+        export { listType_1 as listType };
+        const parameters_1: PropTypes.Requireable<{
+            [x: string]: any;
+        }>;
+        export { parameters_1 as parameters };
+        const initialCaseClass_1: PropTypes.Requireable<string>;
+        export { initialCaseClass_1 as initialCaseClass };
+        const columns_1: PropTypes.Requireable<(object | null | undefined)[]>;
+        export { columns_1 as columns };
+        const isGroupData_1: PropTypes.Requireable<boolean>;
+        export { isGroupData_1 as isGroupData };
+        const groupDataSource_1: PropTypes.Requireable<any[]>;
+        export { groupDataSource_1 as groupDataSource };
+        const groupColumnsConfig_1: PropTypes.Requireable<any[]>;
+        export { groupColumnsConfig_1 as groupColumnsConfig };
+        const showSecondaryInSearchOnly_1: PropTypes.Requireable<boolean>;
+        export { showSecondaryInSearchOnly_1 as showSecondaryInSearchOnly };
+        const additionalProps_1: PropTypes.Requireable<{
+            [x: string]: any;
+        }>;
+        export { additionalProps_1 as additionalProps };
+        const referenceList_1: PropTypes.Requireable<string>;
+        export { referenceList_1 as referenceList };
+        const selectionKey_1: PropTypes.Requireable<string>;
+        export { selectionKey_1 as selectionKey };
+        const primaryField_1: PropTypes.Requireable<string>;
+        export { primaryField_1 as primaryField };
+        const referenceType_1: PropTypes.Requireable<string>;
+        export { referenceType_1 as referenceType };
+        const readonlyContextList_1: PropTypes.Requireable<any[]>;
+        export { readonlyContextList_1 as readonlyContextList };
+        const selectionList_1: PropTypes.Requireable<string>;
+        export { selectionList_1 as selectionList };
+        const secondaryFields_1: PropTypes.Requireable<(string | null | undefined)[]>;
+        export { secondaryFields_1 as secondaryFields };
+        export const disabled: PropTypes.Requireable<boolean>;
+        const cacheLifeSpan_1: PropTypes.Requireable<string>;
+        export { cacheLifeSpan_1 as cacheLifeSpan };
+        const compositeKeys_1: PropTypes.Requireable<(string | null | undefined)[]>;
+        export { compositeKeys_1 as compositeKeys };
+    }
+}
+import PropTypes from "prop-types";
+//# sourceMappingURL=index.d.ts.map

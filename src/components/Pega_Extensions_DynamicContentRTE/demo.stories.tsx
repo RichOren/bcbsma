@@ -7,10 +7,12 @@ import {
   Card,
   CardContent,
   CardFooter,
+  Checkbox,
   Configuration,
   Flex,
   ModalManager,
   PopoverManager,
+  Table,
   TextArea,
   Toaster,
   useAutoResize,
@@ -36,6 +38,8 @@ export const DynamicContentEditorDemo: StoryFn<Partial<DynamicContentEditorStory
   const [html, setHtml] = useState(
     '<p>Hi <pega-reference role="button" contenteditable="false" data-rule-type="field" name="CustomerName" data-rule-id="CustomerName" data-rule-namespace="XCompass">CustomerName</pega-reference><p>please check this <a href="https://google.com">link</a></p></p>'
   );
+
+  let corrHTML = '';
   const rteRef = useRef<EditorState>(null);
 
   const fieldItems: DynamicContentEditorProps['fieldItems'] = [
@@ -119,10 +123,46 @@ export const DynamicContentEditorDemo: StoryFn<Partial<DynamicContentEditorStory
   const onSubmit = useCallback(
     (insertField: (selectedItem: ItemType) => void) => {
       insertField(selectedField);
-      console.log(convertString(rteRef.current?.getHtml() ?? ''));
+      corrHTML = convertString(rteRef.current?.getHtml() ?? '');
+      console.log(corrHTML);
     },
     [selectedField]
   );
+
+  const tableData = [
+    {
+      id: '1234',
+      name: 'Jane Smith 2',
+      dob: '12/31/1990',
+      address: 'Boston, MA',
+      email: 'jsmith@email.com',
+      balance: '$2,200'
+    },
+    {
+      id: '5678',
+      name: 'Joe Smith',
+      dob: '01/01/1980',
+      address: <Checkbox label='Validate'></Checkbox>,
+      email: 'joe.smith@email.com',
+      balance: '$1,350'
+    },
+    {
+      id: '0000',
+      name: 'Mary Lou',
+      dob: '06/15/1985',
+      address: '100 Main Street, Springfield',
+      email: '',
+      balance: '-$175'
+    }
+  ];
+  const columns = [
+    { renderer: 'id', label: 'ID' },
+    { renderer: 'name', label: 'Name' },
+    { renderer: 'dob', label: 'Date of Birth' },
+    { renderer: 'address', label: 'Address', align: 'center' },
+    { renderer: 'email', label: 'Email' },
+    { renderer: 'balance', label: 'Account Balance', align: 'right' }
+  ];
 
   const dynamicContentPicker = (
     <Flex
@@ -175,6 +215,13 @@ export const DynamicContentEditorDemo: StoryFn<Partial<DynamicContentEditorStory
                 defaultValue={html}
                 onImageAdded={onImageAdded}
                 ref={rteRef}
+                initOptions={{
+                  pasteDataImages: false,
+                  textPatterns: false,
+                  initInstanceCallback: editor => {
+                    console.log(`The ${editor} command was fired.`, editor);
+                  }
+                }}
                 label='Dynamic content editor 3'
                 toolbar={['inline-styling', 'lists', 'indentation', 'links', 'images']}
                 form={{ onSubmit, dynamicContentPicker }}
@@ -184,6 +231,15 @@ export const DynamicContentEditorDemo: StoryFn<Partial<DynamicContentEditorStory
               <Flex container={{ gap: 1 }}>
                 <Button onClick={() => handleShowHtml()}>Show HTML</Button>
               </Flex>
+              <Table
+                title='Accounts'
+                hoverHighlight={false}
+                loading={false}
+                loadingMessage='Loading data'
+                data={tableData}
+                // @ts-ignore
+                columns={columns}
+              />
             </Flex>
           </ModalManager>
         </Toaster>

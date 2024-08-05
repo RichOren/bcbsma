@@ -1,0 +1,2 @@
+export declare const getUploadRecordsModalTestIds: (testIdProp?: string | null | undefined) => import("@pega/cosmos-react-core").TestIdsRecord<readonly ["upload-modal-cancel-button", "upload-modal-submit-button", "import-modal-info", "import-additional-info", "download-template-button", "download-error-info", "upload-modal-file-input", "upload-modal-file-input-helper-text"]>;
+//# sourceMappingURL=UploadRecordsModal.test-ids.d.ts.map

@@ -1,0 +1,3 @@
+export function useHandleDragDropAndDeleteColumn(cosmosTableRef: any, tableModel: any, disableDragDrop: any, hideDeleteRow: any, isDisplayModeEnabled: any, isReadOnlyMode: any, fieldErrors: any): void;
+export function useErrorForSimpleTable(allowEditingInModal: any, contextName: any, pageReferenceForRows: any, referenceListStr: any, viewName: any, cosmosTableRef: any, tableModel: any, disableDragDrop: any): {}[];
+//# sourceMappingURL=hooks.d.ts.map

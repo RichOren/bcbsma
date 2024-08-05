@@ -1,0 +1,1 @@
+{"version":3,"file":"useFeature.d.ts","sourceRoot":"","sources":["../../src/hooks/useFeature.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,kBAAkB,EAAE,MAAM,6BAA6B,CAAC;AAItE,KAAK,QAAQ,GAAG,WAAW,CAAC,kBAAkB,CAAC,UAAU,CAAC,CAAC,CAAC;AAE5D,QAAA,MAAM,UAAU,sDACsB,CAAC;AAEvC,eAAe,UAAU,CAAC"}

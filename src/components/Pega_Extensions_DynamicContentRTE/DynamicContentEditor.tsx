@@ -101,6 +101,7 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
       } data-rule-type='field' data-rule-id=${field.id} ${
         field.namespace && `data-rule-namespace=${field.namespace}`
       }>${field.text}</pega-reference>`;
+
       if (bookmark) {
         editor.selection.moveToBookmark(bookmark);
         editor.selection.setContent(fieldContent);
@@ -362,7 +363,7 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
           {
             createCustomElement: createPegaReferenceElement,
             name: 'pega-reference',
-            extensionAttributes: ['contenteditable', 'name'],
+            extensionAttributes: ['contenteditable , name'],
             style: pegaReferenceElementStyle
           }
         ]}
@@ -383,6 +384,15 @@ const DynamicContentEditor: FunctionComponent<DynamicContentEditorProps & Forwar
           }
         ]}
         onInit={setEditor}
+        initOptions={{
+          pasteDataImages: false,
+          textPatterns: false,
+          initInstanceCallback: textEditor => {
+            textEditor.shortcuts.add('meta+b', '', () => {
+              console.log('Hi');
+            });
+          }
+        }}
         onChange={onEditorChange}
         onBlur={() => {
           onBlur?.();

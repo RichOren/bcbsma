@@ -1,0 +1,1 @@
+{"version":3,"file":"useLocalStorageToggle.d.ts","sourceRoot":"","sources":["../../src/hooks/useLocalStorageToggle.ts"],"names":[],"mappings":"AAGA;;;;GAIG;AACH,iBAAS,qBAAqB,CAAC,IAAI,EAAE,MAAM,EAAE,UAAU,EAAE,MAAM,GAAG,CAAC,OAAO,EAAE,MAAM,IAAI,CAAC,CAUtF;AAED,eAAe,qBAAqB,CAAC"}

@@ -1,0 +1,2 @@
+export declare const getPrivacyDialogTestIds: (testIdProp?: string | null | undefined) => import("@pega/cosmos-react-core").TestIdsRecord<readonly ["log-off", "accept", "message"]>;
+//# sourceMappingURL=PrivacyDialog.test-ids.d.ts.map

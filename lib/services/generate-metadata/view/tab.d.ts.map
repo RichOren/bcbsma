@@ -1,0 +1,1 @@
+{"version":3,"file":"tab.d.ts","sourceRoot":"","sources":["../../../../src/services/generate-metadata/view/tab.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,yBAAyB,CAAC;AAG1D,OAAO,KAAK,EAAE,gBAAgB,EAAE,MAAM,WAAW,CAAC;AAGlD,MAAM,CAAC,OAAO,UAAU,QAAQ,CAAC,EAC/B,MAAM,EACN,SAAS,EACT,aAAa,EACb,kBAAkB,GACnB,EAAE,UAAU,CAAC,gBAAgB,EAAE,UAAU,CAAC,gBAiB1C"}

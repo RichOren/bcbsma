@@ -1,0 +1,1 @@
+{"version":3,"file":"root-reducer.d.ts","sourceRoot":"","sources":["../../src/redux/root-reducer.ts"],"names":[],"mappings":"AAQA,eAAO,MAAM,iBAAiB;;;;;;;;;;CAU7B,CAAC;AAEF,eAAO,MAAM,QAAQ,OAAsD,CAAC;AAE5E;;;;GAIG;AACH,MAAM,CAAC,OAAO,UAAU,WAAW,CAAC,iBAAiB,EAAE,GAAG,EAAE,MAAM,EAAE,GAAG,OA0BtE"}
