@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { action } from '@storybook/addon-actions';
+import { useEffect, useMemo, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
@@ -10,14 +9,9 @@ import {
   Toaster
 } from '@pega/cosmos-react-core';
 import PageSections from '../PageSections';
-import type { PageSectionsProps, PageSection } from '../PageSections.types';
+import type { PageSectionsProps } from '../PageSections.types';
 
-import {
-  AddAndEditForm,
-  mockNetworkReq,
-  mockRoles,
-  useMockPageSections
-} from './PageSections.mocks';
+import { mockNetworkReq, useMockPageSections } from './PageSections.mocks';
 
 export default {
   title: 'Work/PageSections',
@@ -28,78 +22,16 @@ interface PageSectionsStoryProps {
   hideAddNew?: boolean;
 }
 
-export const PageSectionsDemo: StoryFn<PageSectionsStoryProps> = (args: PageSectionsStoryProps) => {
+export const PageSectionsDemo: StoryFn<PageSectionsStoryProps> = () => {
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState<undefined | 'add' | 'viewAll'>();
-  const [editing, setEditing] = useState<PageSection['id'] | null>(null);
-  const [formLoading, setFormLoading] = useState(false);
   const [viewAllLoading, setViewAllLoading] = useState(false);
   const [viewAllSearchValue, setViewAllSearchValue] = useState('');
 
   // Grab some mock data...
-  const [mockPageSections, setMockPageSections] = useMockPageSections(() => {
+  const [mockPageSections] = useMockPageSections(() => {
     setLoading(false);
   });
-
-  const [editData, setEditData] = useState<
-    PageSectionsProps['form']['rendererProps'] | undefined
-  >();
-
-  // Merges built-in available actions with stakeholder objects.
-  const addActions = useCallback(
-    (items: PageSection[]) => {
-      return items.map(pageSection => {
-        return {
-          ...pageSection,
-          onEdit: () => {
-            setFormLoading(true);
-            setEditing(pageSection.id);
-            setEditData(mockPageSections.find(ms => ms.id === pageSection.id)?.data);
-            mockNetworkReq().then(() => setFormLoading(false));
-          },
-          onRemove: () => {
-            setMockPageSections(cur => cur.filter(({ id }) => id !== pageSection.id));
-          }
-        };
-      });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mockPageSections]
-  );
-
-  const form: PageSectionsProps['form'] = useMemo(() => {
-    return {
-      // Set this to true when fetching view metadata for the form or during submit validation.
-      loading: formLoading,
-      // Represents "available" roles for a stakeholder. Set to undefined when choosing not to present them as options.
-      roles: mode === 'add' ? mockRoles : undefined,
-      // Represents the current role of a stakeholder if they have one. When undefined the first role in the roles array with be selected in the UI.
-      currentRole: editing ? mockPageSections.find(({ id }) => id === editing)?.role : undefined,
-      /**
-       * A function that will be invoked by React's createElement. If only a simple function is needed then an inline arrow is ok.
-       * If local state(hooks) is desired best to define a stable component definition outside of the parent component's function body.
-       */
-      renderer: AddAndEditForm,
-      rendererProps: editData,
-      onSubmit: ({ selectedRoleName, closeForm }) => {
-        setFormLoading(true);
-        action(`The selected role is: ${selectedRoleName}`);
-        // Create or update the stakeholder resource.
-        mockNetworkReq().then(closeForm);
-      },
-      onDismiss: ({ closeForm }) => {
-        closeForm();
-      },
-      onAfterClose: () => {
-        // Clean up loading state when the form is closed.
-        setFormLoading(false);
-        setEditing(null);
-        setEditData(undefined);
-        setMode(undefined);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, formLoading, mockRoles, editing, editData]);
 
   const viewAll: PageSectionsProps['viewAll'] = useMemo(() => {
     let viewAllItems = mockPageSections;
@@ -116,7 +48,7 @@ export const PageSectionsDemo: StoryFn<PageSectionsStoryProps> = (args: PageSect
       // Set this to true when fetching data for the view all modal.
       loading: viewAllLoading,
       // Even when loading is true this must be an array, empty or not.
-      items: addActions(viewAllItems),
+      items: viewAllItems,
       // The search string will be handed back as the arg, pass a state setter and filter off of that.
       onSearch: setViewAllSearchValue,
       onAfterClose: () => {
@@ -125,15 +57,11 @@ export const PageSectionsDemo: StoryFn<PageSectionsStoryProps> = (args: PageSect
         setViewAllSearchValue('');
       }
     };
-  }, [viewAllLoading, mockPageSections, viewAllSearchValue, addActions]);
+  }, [viewAllLoading, mockPageSections, viewAllSearchValue]);
 
   useEffect(() => {
     // Orchestrate based on mode state if needed.
   }, [mode]);
-
-  useEffect(() => {
-    // Orchestrate based on editing state if needed.
-  }, [editing]);
 
   return (
     <Configuration id='Preview'>
@@ -142,21 +70,10 @@ export const PageSectionsDemo: StoryFn<PageSectionsStoryProps> = (args: PageSect
           <ModalManager>
             <PageSections
               loading={loading}
-              items={useMemo(
-                () => addActions(mockPageSections.slice(0, 3)),
-                [addActions, mockPageSections]
-              )}
+              dataPage={undefined}
+              items={useMemo(() => mockPageSections.slice(0, 3), [mockPageSections])}
               count={loading ? undefined : mockPageSections.length}
-              onAddNew={
-                args.hideAddNew
-                  ? undefined
-                  : () => {
-                      setMode('add');
-                      setFormLoading(true);
-                      mockNetworkReq().then(() => setFormLoading(false));
-                    }
-              }
-              form={form}
+              onExpandAll={undefined}
               onViewAll={() => {
                 setMode('viewAll');
                 setViewAllLoading(true);

@@ -1,12 +1,12 @@
 {
   "components-directory-path": "src/components",
   "server-config": {
-    "rulesetName": "CustomDXComponents",
-    "rulesetVersion": "01-01-04",
+    "rulesetName": "RichsEnhancedComponents",
+    "rulesetVersion": "01-01-01",
     "sourceOfComponents": "Server",
     "devBuild": false,
     "serverType": "infinity",
-    "server": "https://bcbsma-bcbsma-dt1.pega.net/prweb",
+    "server": "https://lab-02325-bos.lab-internal.pega.com/prweb",
     "clientId": "10095186356008396159",
     "clientSecret_comment": "Needed only when using 'passwordCreds' or 'clientCreds' grantType",
     "clientSecret": "",
