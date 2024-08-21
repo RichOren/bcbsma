@@ -23,6 +23,7 @@ export default function PegaExtensionsPageSection(props: ExtPageSectionsProps) {
   const [viewAllLoading, setViewAllLoading] = useState(false);
   const [viewAllSearchValue, setViewAllSearchValue] = useState('');
   const [pageitems, setItems] = useState<PageListItem[]>([]);
+  const [collapsedStates, setCollapsedStates] = useState<{ [key: string]: boolean }>({});
 
   const groupByAuthority = (items: Item[]): JsonObject[] => {
     const result: { [key: string]: JsonObject } = {};
@@ -45,8 +46,6 @@ export default function PegaExtensionsPageSection(props: ExtPageSectionsProps) {
 
     return Object.values(result);
   };
-
-  const [collapsedStates, setCollapsedStates] = useState<{ [key: string]: boolean }>({});
 
   // Fetch Page Sections on component mount.
   useEffect(() => {
@@ -118,12 +117,6 @@ export default function PegaExtensionsPageSection(props: ExtPageSectionsProps) {
                 actions: undefined
               };
             };
-            const caseID = pConn.getCaseInfo().getKey();
-            (window as any).PCore.getPubSubUtils().publish('WidgetUpdated', {
-              widget: 'PEGA_EXTENSIONS_PAGESECTIONS',
-              count: pageitems.length,
-              caseID
-            });
             setItems(groupByAuthority(tmpItems).map(getPageSectionListItem));
             setLoading(false);
           }
@@ -141,7 +134,7 @@ export default function PegaExtensionsPageSection(props: ExtPageSectionsProps) {
         }),
       1
     );
-  }, [collapsedStates, dataPage, pConn, pageitems.length]);
+  }, [collapsedStates, dataPage, pConn]);
 
   const viewAll: PageSectionsProps['viewAll'] = useMemo((): PageSectionsProps['viewAll'] => {
     let viewAllItems = pageitems;
@@ -176,6 +169,13 @@ export default function PegaExtensionsPageSection(props: ExtPageSectionsProps) {
       }
     };
   }, [pageitems, viewAllLoading, viewAllSearchValue]);
+
+  const caseID = pConn.getCaseInfo().getKey();
+  (window as any).PCore.getPubSubUtils().publish('WidgetUpdated', {
+    widget: 'PEGA_EXTENSIONS_PAGESECTIONS',
+    count: pageitems.length,
+    caseID
+  });
 
   return (
     <Configuration>
